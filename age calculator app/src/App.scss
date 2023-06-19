@@ -1,0 +1,90 @@
+/*Primary*/
+$purple: hsl(259, 100%, 65%);
+$errorColor:hsl(0, 100%, 67%);
+
+/*Secondary*/
+$white: hsl(0, 0%, 100%);
+$offWhite: hsl(0, 0%, 94%);
+$lightGrey: hsl(0, 0%, 86%);
+$smokeyGrey: hsl(0, 1%, 44%);
+$offBlack: hsl(0, 0%, 8%);
+
+/*Mixins*/
+@mixin centerDisplay{
+    display: flex;
+    align-items: center;        /*vertical alignment*/
+    justify-content: center;    /*horizontal alignment*/
+}
+@mixin width-height($width, $height){
+    width: $width;
+    height: $height;
+}
+@mixin font-settings($family, $size, $weight){
+    font: {
+        family: $family;
+        size: $size;
+        weight: $weight;
+    }
+}
+
+/*TTF files*/
+@font-face {
+    font-family: 'Poppins-Regular';
+    src: url('./assets/fonts/Poppins-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Poppins-Bold';
+    src: url('./assets/fonts/Poppins-Bold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Poppins-ExtraBold';
+    src: url('./assets/fonts/Poppins-ExtraBold.ttf') format('truetype');
+}
+
+.main-container{
+    color: rgb(131, 131, 131);    
+    background-color: $white;
+    @include centerDisplay();
+    @include width-height(auto, 100vh);
+
+    .second-container{
+        background-color: $offWhite;
+        @include centerDisplay();
+        @include width-height(90%, 80vh);
+        box-shadow: 10px 10px 20px $lightGrey;
+
+        .inner-container{
+            background-color: $white;
+            @include width-height(50%, 60vh);
+            border-radius: 10px 10px 150px 10px;
+
+            .container-input-output{
+                display: flex;
+                flex-direction: column;
+                padding: 5%;
+
+                .date-input{
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+
+                    .individual-date-input{
+                        display: flex;
+                        flex-direction: column;
+                    }
+                    .individual-date-input>label{
+                        @include font-settings('Poppins-Regular', 0.8rem, 700);
+                        letter-spacing: 3px;
+                        margin-bottom: 5px;
+                    }
+                    .individual-date-input>input{
+                        border: 1px solid $lightGrey;
+                        border-radius: 5px;
+                        padding-left: 10px;
+                        @include font-settings('Poppins-Bold', 1.9rem, 700);
+                        @include width-height(9rem, 4rem);
+                    }
+                }
+            }
+        }
+    }
+}
