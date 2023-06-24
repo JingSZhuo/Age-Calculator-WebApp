@@ -40,6 +40,18 @@ $offBlack: hsl(0, 0%, 8%);
     font-family: 'Poppins-ExtraBold';
     src: url('./assets/fonts/Poppins-ExtraBold.ttf') format('truetype');
 }
+@font-face {
+    font-family: 'Poppins-Italic';
+    src: url('./assets/fonts/Poppins-Italic.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Poppins-BoldItalic';
+    src: url('./assets/fonts/Poppins-BoldItalic.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Poppins-ExtraBoldItalic';
+    src: url('./assets/fonts/Poppins-ExtraBoldItalic.ttf') format('truetype');
+}
 
 .main-container{
     color: rgb(131, 131, 131);    
@@ -50,18 +62,20 @@ $offBlack: hsl(0, 0%, 8%);
     .second-container{
         background-color: $offWhite;
         @include centerDisplay();
-        @include width-height(90%, 80vh);
+        @include width-height(90%, auto);
+        min-height: 80vh;
         box-shadow: 10px 10px 20px $lightGrey;
 
         .inner-container{
             background-color: $white;
-            @include width-height(50%, 60vh);
+            @include width-height(50%, auto);
+            min-height: 60vh;
             border-radius: 10px 10px 150px 10px;
 
             .container-input-output{
                 display: flex;
                 flex-direction: column;
-                padding: 5%;
+                padding: 7% 7% 0 7%;
 
                 .date-input{
                     display: grid;
@@ -83,8 +97,36 @@ $offBlack: hsl(0, 0%, 8%);
                         @include font-settings('Poppins-Bold', 1.9rem, 700);
                         @include width-height(9rem, 4rem);
                     }
+                    .individual-date-input .error-message{
+                        color: $errorColor;
+                        @include font-settings('Poppins-Italic', 0.7rem, 700);
+                    }
+                }
+            }
+
+            .output-container{
+                padding: 0 7%;
+                display: flex;
+                flex-direction: column;
+
+                .date-output-ymd-container{
+                    display: flex;
+                    flex-direction: row;
+                }
+                .date-output-ymd-container>p{
+                    @include font-settings('Poppins-ExtraBoldItalic', 5.5vw, 800);
+                    color: $offBlack;
+                    margin: 0;
+                }
+                .date-output-ymd-container>.state-ymd {
+                    color: $purple;
                 }
             }
         }
     }
+}
+
+
+.error-input{
+    color: $errorColor;
 }
