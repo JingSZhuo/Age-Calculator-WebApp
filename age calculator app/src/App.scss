@@ -26,6 +26,10 @@ $offBlack: hsl(0, 0%, 8%);
         weight: $weight;
     }
 }
+@mixin flexDirection($flex, $direction){
+    display: $flex;
+    flex-direction: $direction;
+}
 
 /*TTF files*/
 @font-face {
@@ -68,22 +72,23 @@ $offBlack: hsl(0, 0%, 8%);
 
         .inner-container{
             background-color: $white;
-            @include width-height(50%, auto);
+            //@include width-height(65%, auto);
             min-height: 60vh;
             border-radius: 10px 10px 150px 10px;
 
             .container-input-output{
-                display: flex;
-                flex-direction: column;
+                @include flexDirection(flex, column);
                 padding: 7% 7% 0 7%;
 
                 .date-input{
+                    position: relative;
                     display: grid;
-                    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+                    grid-template-columns: repeat(4, 1fr);
+                    gap: 1vw;
+                    border-bottom: solid 1px $lightGrey;
 
                     .individual-date-input{
-                        display: flex;
-                        flex-direction: column;
+                        @include flexDirection(flex, column);
                     }
                     .individual-date-input>label{
                         @include font-settings('Poppins-Regular', 0.8rem, 700);
@@ -106,15 +111,13 @@ $offBlack: hsl(0, 0%, 8%);
 
             .output-container{
                 padding: 0 7%;
-                display: flex;
-                flex-direction: column;
+                @include flexDirection(flex, column);
 
                 .date-output-ymd-container{
-                    display: flex;
-                    flex-direction: row;
+                    @include flexDirection(flex, row);
                 }
                 .date-output-ymd-container>p{
-                    @include font-settings('Poppins-ExtraBoldItalic', 5.5vw, 800);
+                    @include font-settings('Poppins-ExtraBoldItalic', 5rem, 800);
                     color: $offBlack;
                     margin: 0;
                 }
@@ -129,4 +132,77 @@ $offBlack: hsl(0, 0%, 8%);
 
 .error-input{
     color: $errorColor;
+}
+#submit{
+    @include width-height(5rem, 5rem);
+    align-items: end;
+    border-radius: 50%;
+    background-color: $purple;
+    background-image: url('./assets/icon-arrow.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    border: none;
+    color: #333;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#submit:hover{
+    background-color: $offBlack;
+}
+
+.submit-div{
+    position: absolute;
+    right: 0;
+    bottom: -2.5rem;
+}
+
+//Media Queries
+
+@media screen and (max-width: 768px){
+    #submit{
+        @include width-height(3rem, 3rem);
+        background-size: 60% 60%;
+    }
+    .submit-div{
+        position: absolute;
+        right: 42%;
+        bottom: -1.7rem;
+    }
+    .main-container {
+        .second-container {
+            .inner-container{
+                min-height: auto;
+                width: 75vw;
+                .container-input-output{
+                    .date-input{
+                        height: 100px;
+                        .individual-date-input > input {
+                            @include width-height(4rem, 2rem);
+                            font-size: 1rem;
+                        }
+                        .individual-date-input > label {
+                            font-size: 0.6rem;
+                        }
+                    }
+                }
+                .output-container{
+                    margin-top: 40px;                    
+                    .date-output-ymd-container>p{
+                        font-size: 3rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1440px){ 
+    .main-container{
+        .second-container {
+            .inner-container{
+                min-height: auto;
+            }
+        }
+    }
 }
