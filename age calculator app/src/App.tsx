@@ -20,14 +20,14 @@ function App(){
     }
     else {(setErrorYear(''))}
   }
-  function VerifyMonth(event: any) {
+  function VerifyMonth(event: any): void{
     const m: number = event.target.value;
     if(!(m > 12 && m < 1)) { 
       setErrorMonth('Must be a valid month')
     }
     else {(setErrorMonth(''))}
   }
-  function VerifyDay(event: any){
+  function VerifyDay(event: any): void{
     const d: number = event.target.value;
     if(!(d > 0 && d < 32)){
       setErrorDate('Must be a valid day')
