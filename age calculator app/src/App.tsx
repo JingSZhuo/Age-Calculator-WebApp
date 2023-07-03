@@ -22,7 +22,7 @@ function App(){
   }
   function VerifyMonth(event: any): void{
     const m: number = event.target.value;
-    if(!(m > 12 && m < 1)) { 
+    if(!(m > 0 && m < 13)) { 
       setErrorMonth('Must be a valid month')
     }
     else {(setErrorMonth(''))}
