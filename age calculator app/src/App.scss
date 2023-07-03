@@ -171,9 +171,10 @@ $offBlack: hsl(0, 0%, 8%);
     }
     .main-container {
         .second-container {
+            width: 100%;
             .inner-container{
                 min-height: auto;
-                width: 75vw;
+                border-radius: 10px 10px 100px;
                 .container-input-output{
                     .date-input{
                         height: 100px;
@@ -184,10 +185,14 @@ $offBlack: hsl(0, 0%, 8%);
                         .individual-date-input > label {
                             font-size: 0.6rem;
                         }
+                        .individual-date-input .error-message{
+                            @include font-settings('Poppins-Italic', 0.4rem, 700);
+                        }
                     }
                 }
                 .output-container{
-                    margin-top: 40px;                    
+                    margin-top: 40px;   
+                    padding: 0 0 0 7%;                 
                     .date-output-ymd-container>p{
                         font-size: 3rem;
                     }
