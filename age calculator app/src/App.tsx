@@ -56,34 +56,34 @@ function App(){
       setDate('--'); setMonth('--'); setYear('--'); 
       if (dateInput.value === ""){
         setErrorDate('This following fields are required');
-      } else { setErrorDate('')}
+      }// else { setErrorDate('')}
       if (monthInput.value === ""){
         setErrorMonth('This following fields are required');
-      } else { setErrorMonth('')}
+      } //else { setErrorMonth('')}
       if (yearInput.value === ""){
         setErrorYear('This following fields are required');
-      } else { setErrorYear('')}
+      } //else { setErrorYear('')}
+      return;
     }
 
     //Check if year is larger than current year
-    if (yearInputParsed > currentDate.getFullYear()){
+    else if (yearInputParsed > currentDate.getFullYear()){
       //setErrorDate(''); setErrorMonth(''); setErrorYear('Must be in the past');
       return;
     }
     //Check if month is between 0 and 12
-    if (monthInputParsed > 12 || monthInputParsed < 1){
+    else if (monthInputParsed > 12 || monthInputParsed < 1){
       //setErrorDate(''); setErrorMonth('Must be a valid month'); setErrorYear('');
       return;
     }
     //Check if date is between 1 and 31
-    if (!(dateInputParsed < 32 && dateInputParsed > 0)){
+    else if (!(dateInputParsed < 32 && dateInputParsed > 0)){
       //setErrorDate('Must be a valid day'); setErrorMonth(''); setErrorYear('');
       return;
     }
     //Check for appropriate date format i.e. 31/4 is not appropriate as there is 30 days in april
-    if (dateInputParsed > dateCheck.getDate()) {
+    else if (dateInputParsed > dateCheck.getDate()) {
       setErrorDate('Must be a valid date');
-      return;
     }
     else{
       CalculateAge( parseInt(dateInput.value), parseInt(monthInput.value), parseInt(yearInput.value) );
