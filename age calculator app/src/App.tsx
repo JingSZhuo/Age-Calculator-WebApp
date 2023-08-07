@@ -96,19 +96,29 @@ function App(){
     const currentDate = new Date(); //new date object to get current day/month/year
     const birthDate = new Date(byear, bmonth, bdate);
 
+    //Difference in currentyear and birthyear is 0 or greater (i.e) byear same or smaller, bmonth same or smaller, bdate same or smaller --independent
     let ageInYear: number = currentDate.getFullYear() - birthDate.getFullYear();
     let ageInMonth: number = (currentDate.getMonth()+1) - birthDate.getMonth();
     let ageInDate: number = currentDate.getDate() - birthDate.getDate();
 
-    if (ageInMonth < 0){  //If the birth month is larger than current month
+    //Special conditions
+    if ((ageInDate < 0 && ageInMonth < 0)){   //if month and date is larger than current date
+      ageInYear--;
+      ageInMonth+=11;
+      ageInDate += new Date(currentDate.getFullYear(), currentDate.getMonth(), 0).getDate(); //Gets the last day of the previous month
+      console.log('date and month both larger')
+    }
+    else if ((ageInMonth === 0 && ageInDate < 0)){   //Month is the same and date is larger
+      ageInYear--;
+      ageInMonth+=11;
+      ageInDate += new Date(currentDate.getFullYear(), currentDate.getMonth(), 0).getDate(); //Gets the last day of the previous month
+      console.log('month same but date larger')
+    }
+    else if ((ageInMonth < 0 && ageInDate === 0)){  //Date is the same and month is larger
       ageInYear--;
       ageInMonth+=12;
-    }
-    if (ageInDate < 0){   //If the birth date is larger than current date
-      ageInMonth--;
-      ageInDate = currentDate.getDate() + new Date(currentDate.getFullYear(), currentDate.getMonth(), 0).getDate() - bdate; //Gets the last day of the previous month
-    }
-
+      console.log('date same but month larger')
+    }  
     setYear(`${ageInYear}`); setMonth(`${ageInMonth}`); setDate(`${ageInDate}`);
   }
 
