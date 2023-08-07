@@ -114,11 +114,18 @@ function App(){
       ageInDate += new Date(currentDate.getFullYear(), currentDate.getMonth(), 0).getDate(); //Gets the last day of the previous month
       console.log('month same but date larger')
     }
-    else if ((ageInMonth < 0 && ageInDate === 0)){  //Date is the same and month is larger
+    else if ((ageInDate === 0 && ageInMonth < 0 )){  //Date is the same and month is larger
       ageInYear--;
       ageInMonth+=12;
       console.log('date same but month larger')
     }  
+    else if ((ageInMonth > 0 && ageInDate < 0)){    //Date is larger and month is smaller
+      ageInMonth--;
+      ageInDate += new Date(currentDate.getFullYear(), currentDate.getMonth(), 0).getDate(); //Gets the last day of the previous month
+      console.log('month smaller but date larger')
+    }
+
+
     setYear(`${ageInYear}`); setMonth(`${ageInMonth}`); setDate(`${ageInDate}`);
   }
 
