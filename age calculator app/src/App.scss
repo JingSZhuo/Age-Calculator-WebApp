@@ -61,6 +61,7 @@ $offBlack: hsl(0, 0%, 8%);
     color: rgb(131, 131, 131);    
     background-color: $white;
     @include centerDisplay();
+    @include flexDirection(flex, column);
     @include width-height(auto, 100vh);
 
     .second-container{
