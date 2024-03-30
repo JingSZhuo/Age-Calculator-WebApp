@@ -175,6 +175,9 @@ function App(){
             </div>
           </div>
         </div>
+        <div style={{marginTop: '15px'}}>
+          <p style={{fontSize: '10px', color: 'black'}}> Made by <a href='https://github.com/JingSZhuo' style={{fontSize: '10px', color: '#a850fb' , textDecoration: 'none'}}>Jing Zhuo</a></p>
+        </div>
       </div>
     </div>
   )
